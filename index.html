@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+    <head>
+        <meta charset="utf-8">
+        <title>Products and Orders</title>
+        <script src="./bower_components/angular/angular.js" charset="utf-8"></script>
+        <script src="main.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div ng-controller="productController">
+            <h1>Products Controller</h1>
+            <form ng-submit="create()">
+                <p>Product Name: <input type="text" ng-model="product.name" placeholder="Product Name"></p>
+                <p>Product Price: <input type="text" ng-model="product.price" placeholder="Product Price"></p>
+                <input type="submit" value="Add Product">
+            </form>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in products | orderBy: 'price' track by $index">
+                        <td>{{product.name}}</td>
+                        <td>{{product.price | currency: "USD $"}}</td>
+                        <td><button ng-click='delete($index)'>Delete</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div ng-controller="orderController">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Qty Available</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="product in products | orderBy: 'price' track by $index">
+                        <td>{{product.name}}</td>
+                        <td>{{product.price | currency: "USD $"}}</td>
+                        <td>{{product.quantity}}</td>
+                        <td><button ng-click='update($index)'>Buy</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </body>
+</html>
