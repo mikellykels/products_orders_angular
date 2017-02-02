@@ -1,7 +1,7 @@
 ## Project "Products and Orders - MEAN (Angular)"
 ---
 ###### A basic app that demonstrates Angular.
-..* New products start with a quantity of 50.
+* New products start with a quantity of 50.
 ---
 
 1. Open the `index.html` file in your browser.
